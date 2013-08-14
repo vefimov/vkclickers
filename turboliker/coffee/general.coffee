@@ -1,6 +1,6 @@
 class VK
   constructor: ->
-    setTimeout @run, 2000
+    setTimeout @run, 1000
 
   run: =>
     likeBtn = jQuery(".fw_like_wrap .fw_like_link, #pv_like_link")
@@ -47,13 +47,13 @@ class TurboLiker
         return location.reload()
       row = rows.eq(i)
       url = row.find("a").attr("href") + location.search
-      console.log i, url
+      url = url.replace "https", "http"
       window.open url, "__blank"
       setTimeout => 
         row.find(".btn-group p:first-child").click()
         i++
         setTimeout loopRows, 500
-      , 5000
+      , 4000
 
 
 jQuery(document).ready =>

@@ -6,7 +6,7 @@
 
   VK = (function() {
     function VK() {
-      this.run = __bind(this.run, this);      setTimeout(this.run, 2000);
+      this.run = __bind(this.run, this);      setTimeout(this.run, 1000);
     }
 
     VK.prototype.run = function() {
@@ -67,13 +67,13 @@
         }
         row = rows.eq(i);
         url = row.find("a").attr("href") + location.search;
-        console.log(i, url);
+        url = url.replace("https", "http");
         window.open(url, "__blank");
         return setTimeout(function() {
           row.find(".btn-group p:first-child").click();
           i++;
           return setTimeout(loopRows, 500);
-        }, 5000);
+        }, 4000);
       })();
     };
 
