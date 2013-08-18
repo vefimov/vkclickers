@@ -3,7 +3,7 @@ class VK
     setTimeout @run, 1000
 
   run: =>
-    likeBtn = jQuery(".fw_like_wrap .fw_like_link, #pv_like_link")
+    likeBtn = jQuery(".fw_like_wrap .fw_like_link, #pv_like_link, .fw_like_wrap.fl_l, #pv_like_wrap")
     subscribeBtn = jQuery("#subscribe_button, #group_like_module button")
     friendBtn = jQuery("#friend_status button")
 
