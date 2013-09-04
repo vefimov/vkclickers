@@ -66,12 +66,17 @@
       len = rows.size();
       i = 0;
       return (loopRows = function() {
-        var row, url;
+        var handler, row, url;
         if (i === rows.size()) {
           return location.reload();
         }
         row = rows.eq(i);
-        url = row.find("a").attr("href") + location.search;
+        url = row.find("a").attr("href");
+        if (!url) {
+          handler = row.find(">td>div[href]").attr("onclick");
+          url = "http://vk.com/club" + handler.match(/,(\d+)/)[1];
+        }
+        url = url + location.search;
         url = url.replace("https", "http");
         window.open(url, "__blank");
         return setTimeout(function() {

@@ -46,7 +46,11 @@ class TurboLiker
       if i is rows.size()
         return location.reload()
       row = rows.eq(i)
-      url = row.find("a").attr("href") + location.search
+      url = row.find("a").attr("href")
+      unless url   
+        handler = row.find(">td>div[href]").attr("onclick")
+        url = "http://vk.com/club" + handler.match(/,(\d+)/)[1]
+      url = url + location.search
       url = url.replace "https", "http"
       window.open url, "__blank"
       setTimeout => 

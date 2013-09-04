@@ -1,0 +1,16 @@
+{
+	"name": "Bot for Add me Fast",
+	"version": "1",
+	"manifest_version": 2,
+	"description": "Bot for Add me Fast",
+	"content_scripts": [
+		{
+		  "matches": ["https://www.facebook.com/*", "https://twitter.com/settings/account/*", "http://addmefast.com/*"],
+		  "js": ["js/jquery-1.10.2.min.js", "js/general.js"]
+		}
+	  ],
+	"browser_action":	{
+		"default_icon": "icon.jpg"
+	}
+
+}
