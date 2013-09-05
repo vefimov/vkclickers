@@ -25,13 +25,27 @@ class Facebook
       setTimeout =>
         window.close()
       , 2000
-    , 4000
+    , 2000
+
+class Twitter
+  constructor: ->
+    setTimeout =>   
+      jQuery("#follow_btn_form button[type=submit]").click()
+      jQuery("#retweet_btn_form input[type=submit]").click()
+
+      setTimeout =>
+        window.close()
+      , 2000
+    , 2000
 
 jQuery(document).ready =>
+
   if location.host is "addmefast.com"
     new Addme()
   else if location.host is "www.facebook.com"
     new Facebook()
+  else if location.host is "twitter.com"
+    new Twitter()
 
   setTimeout =>
     location.reload()
