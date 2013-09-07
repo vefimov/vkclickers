@@ -38,11 +38,15 @@
         likeBtn.get(0).click();
         return setTimeout(function() {
           return location.href = "http://likest.ru/like-redirect.php";
-        }, 500);
+        }, 3000);
       } else if (subscribeBtn.size() || jQuery("#unsubscribe").size()) {
         return subscribeBtn.get(0).click();
       } else if (friendBtn.size()) {
         return friendBtn.get(0).click();
+      } else if (document.referrer.indexOf("http://likest.ru/like-redirect.php") > -1 || document.referrer.indexOf("http://likest.ru/earn") > -1) {
+        return setTimeout(function() {
+          return location.href = "http://likest.ru/like-redirect.php";
+        }, 3000);
       }
     };
 

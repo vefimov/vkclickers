@@ -28,11 +28,15 @@ class VK
       likeBtn.get(0).click()
       setTimeout =>
         location.href = "http://likest.ru/like-redirect.php"
-      , 500
+      , 3000
     else if subscribeBtn.size() || jQuery("#unsubscribe").size()
       subscribeBtn.get(0).click() 
     else if friendBtn.size()
       friendBtn.get(0).click()
+    else if document.referrer.indexOf("http://likest.ru/like-redirect.php") > -1 or document.referrer.indexOf("http://likest.ru/earn") > -1 
+      setTimeout =>
+        location.href = "http://likest.ru/like-redirect.php"
+      , 3000
 
 class Snebes
   constructor: ->
