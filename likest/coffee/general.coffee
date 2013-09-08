@@ -33,7 +33,7 @@ class VK
       subscribeBtn.get(0).click() 
     else if friendBtn.size()
       friendBtn.get(0).click()
-    else if document.referrer.indexOf("http://likest.ru/like-redirect.php") > -1 or document.referrer.indexOf("http://likest.ru/earn") > -1 
+    else #if document.referrer.indexOf("http://likest.ru/like-redirect.php") > -1 or document.referrer.indexOf("http://likest.ru/earn") > -1 
       setTimeout =>
         location.href = "http://likest.ru/like-redirect.php"
       , 3000
@@ -43,24 +43,30 @@ class Snebes
     @run()
 
   run: =>
-    if location.href is "http://likest.ru/earn"
+    if location.href is "http://likest.ru/earn" || location.href is "http://likest.ru/like-redirect.php"
       setTimeout =>
         location.href = "http://likest.ru/like-redirect.php"
-      , 2500
+      , 5000
     else
       cells = document.querySelectorAll(".groups-container a")
       i = 0
-      while i < cells.length
-        el = cells[i]
-        do (el, i) =>
-          setTimeout =>
-            url = el.href
-            window.open(url, "__blank")
-            if i is cells.length - 1
-              location.reload()
-          , i * 5000
 
-        i++
+      unless cells.length
+        setTimeout =>
+          location.reload()
+        , 5000
+      else
+        while i < cells.length
+          el = cells[i]
+          do (el, i) =>
+            setTimeout =>
+              url = el.href
+              window.open(url, "__blank")
+              if i is cells.length - 1
+                location.reload()
+            , i * 5000
+
+          i++
 
 
 

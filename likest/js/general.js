@@ -43,7 +43,7 @@
         return subscribeBtn.get(0).click();
       } else if (friendBtn.size()) {
         return friendBtn.get(0).click();
-      } else if (document.referrer.indexOf("http://likest.ru/like-redirect.php") > -1 || document.referrer.indexOf("http://likest.ru/earn") > -1) {
+      } else {
         return setTimeout(function() {
           return location.href = "http://likest.ru/like-redirect.php";
         }, 3000);
@@ -67,29 +67,35 @@
     Snebes.prototype.run = function() {
       var cells, el, i, _results,
         _this = this;
-      if (location.href === "http://likest.ru/earn") {
+      if (location.href === "http://likest.ru/earn" || (location.href = "http://likest.ru/like-redirect.php")) {
         return setTimeout(function() {
           return location.href = "http://likest.ru/like-redirect.php";
-        }, 2500);
+        }, 10000);
       } else {
         cells = document.querySelectorAll(".groups-container a");
         i = 0;
-        _results = [];
-        while (i < cells.length) {
-          el = cells[i];
-          (function(el, i) {
-            return setTimeout(function() {
-              var url;
-              url = el.href;
-              window.open(url, "__blank");
-              if (i === cells.length - 1) {
-                return location.reload();
-              }
-            }, i * 5000);
-          })(el, i);
-          _results.push(i++);
+        if (!cells.length) {
+          return setTimeout(function() {
+            return location.reload();
+          }, 10000);
+        } else {
+          _results = [];
+          while (i < cells.length) {
+            el = cells[i];
+            (function(el, i) {
+              return setTimeout(function() {
+                var url;
+                url = el.href;
+                window.open(url, "__blank");
+                if (i === cells.length - 1) {
+                  return location.reload();
+                }
+              }, i * 5000);
+            })(el, i);
+            _results.push(i++);
+          }
+          return _results;
         }
-        return _results;
       }
     };
 
