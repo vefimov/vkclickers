@@ -46,10 +46,15 @@ class TurboLiker
       if i is rows.size()
         return location.reload()
       row = rows.eq(i)
+      console.log row
       url = row.find("a").attr("href")
       unless url   
         handler = row.find(">td>div[href]").attr("onclick")
-        url = "http://vk.com/club" + handler.match(/,(\d+)/)[1]
+        if matches = handler.match(/vk.com\/(.*)'/)
+          url = "http://vk.com/" + matches[1]
+        else
+          url = "http://vk.com/club" + handler.match(/,(\d*),/)[1]
+
       url = url + location.search
       url = url.replace "https", "http"
       window.open url, "__blank"

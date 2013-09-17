@@ -5,7 +5,7 @@
 	"description": "Bot for Olike.",
 	"content_scripts": [
 		{
-		  "matches": ["http://vk.com/*", "http://turboliker.ru/*"],
+		  "matches": ["http://vk.com/*", "http://turboliker.ru/*", "https://vk.com/*"],
 		  "js": ["js/jquery-1.10.2.min.js", "js/general.js"]
 		}
 	  ],

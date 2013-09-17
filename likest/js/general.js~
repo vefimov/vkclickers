@@ -67,7 +67,7 @@
     Snebes.prototype.run = function() {
       var cells, el, i, _results,
         _this = this;
-      if (location.href === "http://likest.ru/earn") {
+      if (location.href === "http://likest.ru/earn")) {
         return setTimeout(function() {
           return location.href = "http://likest.ru/like-redirect.php";
         }, 10000);
